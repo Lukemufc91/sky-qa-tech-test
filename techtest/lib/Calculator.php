@@ -24,6 +24,7 @@ class Calculator implements iCalculator {
     }
 
     public function factorial($a) {
+        if ($a < 0) return "NaN";
         $b = 1;
         for($i; $i<=$a; $i++) {
           $b * $i;
@@ -71,6 +72,27 @@ class Calculator implements iCalculator {
         $this->op = "/";
     }
 
+    public function pressCubeRoot() {
+        if(count($this->stack) > 1) {
+            $this->evaluateStack();
+        }
+        $this->op = "cubeRoot";
+    }
+
+    public function pressDecHex() {
+        if(count($this->stack) > 1) {
+            $this->evaluateStack();
+        }
+        $this->op = "dexHex";
+    }
+
+    public function pressFactorial() {
+        if(count($this->stack) > 1) {
+            $this->evaluateStack();
+        }
+        $this->op = "!";
+    }
+
     public function pressEquals() {
         return $this->evaluateStack();
     }
@@ -88,6 +110,15 @@ class Calculator implements iCalculator {
                 break;
             case "/":
                 $result = $this->divide(array_shift($this->stack), array_shift($this->stack));
+                break;
+            case "decHex":
+                $result = $this->decToHex(array_shift($this->stack));
+                break;
+            case "cubeRoot":
+                $result = $this->cubeRoot(array_shift($this->stack));
+                break;
+            case "!":
+                $result = $this->factorial(array_shift($this->stack));
                 break;
         }
         $this->clearStack();

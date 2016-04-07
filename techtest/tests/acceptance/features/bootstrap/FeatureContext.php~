@@ -71,7 +71,7 @@ class FeatureContext extends BehatContext {
     }
 
     /**
-     * @Given /^I hit "factorial"$/
+     * @Given /^I hit "cube root"$/
      */
     public function iHitFactorial() {
         $this->calculator->pressFactorial();
