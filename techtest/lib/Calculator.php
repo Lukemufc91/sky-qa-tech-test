@@ -22,6 +22,22 @@ class Calculator implements iCalculator {
         return ($a / $b);
     }
 
+    public function factorial($a) {
+        $b = 1;
+        for($i; $i<=$a; $i++) {
+          $b * $i;
+        }
+        return $b;
+    }
+
+    public function decToHex($a) {
+        return dechex($a);
+    }
+
+    public function cubeRoot($a) {
+        return pow($a, 1/3);
+    }
+
     public function pressNumber($number) {
         $this->stack[] = $number;
     }
